@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="https://sytranvn.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://sytranvn.github.io/" rel="alternate" type="text/html" /><updated>2020-10-06T10:58:43+07:00</updated><id>https://sytranvn.github.io/feed.xml</id><title type="html">SyTran.github.io</title><subtitle>I write code.</subtitle><entry><title type="html">About me</title><link href="https://sytranvn.github.io/about/2020/10/06/welcome-to-jekyll.html" rel="alternate" type="text/html" title="About me" /><published>2020-10-06T01:37:18+07:00</published><updated>2020-10-06T01:37:18+07:00</updated><id>https://sytranvn.github.io/about/2020/10/06/welcome-to-jekyll</id><content type="html" xml:base="https://sytranvn.github.io/about/2020/10/06/welcome-to-jekyll.html">&lt;p&gt;TBD&lt;/p&gt;</content><author><name></name></author><category term="about" /><summary type="html">TBD</summary></entry><entry><title type="html">Token</title><link href="https://sytranvn.github.io/v8-adventure/2020/10/06/token.html" rel="alternate" type="text/html" title="Token" /><published>2020-10-06T00:00:00+07:00</published><updated>2020-10-06T00:00:00+07:00</updated><id>https://sytranvn.github.io/v8-adventure/2020/10/06/token</id><content type="html" xml:base="https://sytranvn.github.io/v8-adventure/2020/10/06/token.html">&lt;h1 id=&quot;token&quot;&gt;Token&lt;/h1&gt;
+&lt;p&gt;All tokens are defined by a macro &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;TOKEN_LIST&lt;/code&gt;. It takes a list of 3 macros M all of which satisfy the same signature M(name, string, precedence), where name is the symbolic token name, string is the corresponding syntactic symbol (or NULL, for literals), and precedence is the precedence (or 0).
+The parameters are invoked for token categories as follows:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;T: Non-keyword tokens&lt;/li&gt;
+  &lt;li&gt;K: Keyword tokens&lt;/li&gt;
+  &lt;li&gt;F: Future (reserved) keyword tokens&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-cpp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;#ifndef V8_TOKEN_H_
+#define V8_TOKEN_H_
+&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;#define TOKEN_LIST(T, K, F)                                             \
+  &lt;/span&gt;&lt;span class=&quot;cm&quot;&gt;/* End of source indicator. */&lt;/span&gt;&lt;span class=&quot;cp&quot;&gt;                                        \
+  T(EOS, &quot;EOS&quot;, 0)                                                      \
+                                                                        \
+  &lt;/span&gt;&lt;span class=&quot;cm&quot;&gt;/* Punctuators (ECMA-262, section 7.7, page 15). */&lt;/span&gt;&lt;span class=&quot;cp&quot;&gt;                   \
+  T(LPAREN, &quot;(&quot;, 0)                                                     \
+  T(RPAREN, &quot;)&quot;, 0)                                                     \
+  T(LBRACK, &quot;[&quot;, 0)                                                     \
+  T(RBRACK, &quot;]&quot;, 0)                                                     \
+  &lt;/span&gt;&lt;span class=&quot;cm&quot;&gt;/* some more tokens, and keywords */&lt;/span&gt;&lt;span class=&quot;cp&quot;&gt;
+&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;K&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;INSTANCEOF&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;instanceof&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;                                       \
+  &lt;span class=&quot;n&quot;&gt;K&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;IN&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;in&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;                                                       \
+  &lt;span class=&quot;cm&quot;&gt;/* and future reserved words */&lt;/span&gt;
+  &lt;span class=&quot;cm&quot;&gt;/* Future reserved words (ECMA-262, section 7.5.3, page 14). */&lt;/span&gt;       \
+  &lt;span class=&quot;n&quot;&gt;F&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ABSTRACT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;abstract&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;                                            \
+  &lt;span class=&quot;n&quot;&gt;F&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;BOOLEAN&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;boolean&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;#endif  // V8_TOKEN_H_
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h2 id=&quot;token-class&quot;&gt;Token class&lt;/h2&gt;
+&lt;p&gt;The &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Token&lt;/code&gt; class provides static values and methods to work with token list.&lt;/p&gt;
+&lt;div class=&quot;language-cpp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Token&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+ &lt;span class=&quot;nl&quot;&gt;public:&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;// All token values.&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;#define T(name, string, precedence) name,
+&lt;/span&gt;  &lt;span class=&quot;k&quot;&gt;enum&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Value&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;TOKEN_LIST&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;IGNORE_TOKEN&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;NUM_TOKENS&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;#undef T
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;This combines with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;TOKEN_LIST&lt;/code&gt; will give a result of&lt;/p&gt;
+&lt;div class=&quot;language-cpp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Token&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+ &lt;span class=&quot;nl&quot;&gt;public:&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;enum&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Value&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;EOS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LPAREN&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;RPAREN&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LBRACK&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;RBRACK&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LBRACE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;...,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;NUM_TOKENS&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Conviniently, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;NUM_TOKENS&lt;/code&gt; ‘s value is exact length of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;TOKEN_LIST&lt;/code&gt;.
+Use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gcc src/token.h -E -D DEBUG&lt;/code&gt; to see the full source code of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Token&lt;/code&gt; header generated by the macro. When debug mode is on, this macro will generate extra information to help debugging. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Name(tok)&lt;/code&gt; will return the string corresponding to the C++ token name (e.g. “LT” for the token LT).&lt;/p&gt;
+&lt;div class=&quot;language-cpp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;#ifdef DEBUG
+&lt;/span&gt;  &lt;span class=&quot;k&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Value&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tok&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;ASSERT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tok&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tok&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;NUM_TOKENS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tok&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;#endif
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;But we don’t see how precedence is managed yet. Let’s take a look into &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;src/token.cc&lt;/code&gt;.&lt;/p&gt;
+&lt;div class=&quot;language-cpp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;#include &quot;token.h&quot;
+&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;#ifdef DEBUG
+#define T(name, string, precedence) #name,
+&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Token&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NUM_TOKENS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;TOKEN_LIST&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;IGNORE_TOKEN&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;#undef T
+#endif
+&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;#define T(name, string, precedence) string,
+&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Token&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;string_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NUM_TOKENS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;TOKEN_LIST&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;IGNORE_TOKEN&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;#undef T
+&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;#define T(name, string, precedence) precedence,
+&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int8_t&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Token&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;precedence_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NUM_TOKENS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;TOKEN_LIST&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;IGNORE_TOKEN&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;#undef T
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Here we can see the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Token::name_&lt;/code&gt; is assigned with token names, and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Token::string_&lt;/code&gt; is assigned with actual token string. And &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Token::name_&lt;/code&gt; only requires more memory if we are in debug mode.
+The precedences defined in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;TOKEN_LIST&lt;/code&gt; will be assigned to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Token::precedence_&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Since token value is a number from &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;0&lt;/code&gt; to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;NUM_TOKENS - 1&lt;/code&gt;, we need a way to quickly convert a token string to corresponding value, and vice versa. To do so, we use a hash table, if a given string does not match any value in hash table, it must be an identifier.
+For later version of v8, hash talbe is auto generated by &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gperf&lt;/code&gt; to produce a &lt;strong&gt;perfect hash table&lt;/strong&gt;.&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;If you don’t know how it works, find out. If you’re not sure if it will work, try it. If it doesn’t make sense, play with it until it does. If it’s not broken, break it. If it might not be true, find out.&lt;/p&gt;
+
+  &lt;p&gt;Seth Godin&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Token&lt;/code&gt; class must be initialized once, checking for collisions, and verify the result again.&lt;/p&gt;</content><author><name></name></author><category term="v8-adventure" /><category term="v8" /><category term="cpp" /><summary type="html">Token All tokens are defined by a macro TOKEN_LIST. It takes a list of 3 macros M all of which satisfy the same signature M(name, string, precedence), where name is the symbolic token name, string is the corresponding syntactic symbol (or NULL, for literals), and precedence is the precedence (or 0). The parameters are invoked for token categories as follows: T: Non-keyword tokens K: Keyword tokens F: Future (reserved) keyword tokens</summary></entry></feed>
