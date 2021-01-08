@@ -1,0 +1,32 @@
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>
+    {%- if page.title -%}
+    {{ page.title }}
+    {%- else -%}
+    {{ site.title }}
+    {%- endif -%}
+  </title>
+
+  {% seo title=false %}
+  {% feed_meta %}
+
+  <link rel="shortcut icon" type="image/x-icon" href="{{ site.favicon | relative_url }}" />
+  <link rel="stylesheet" href="{{ "/assets/css/main.css" | relative_url }}" />
+  <script>
+    window.onload = function () {
+      var headings = document.querySelectorAll("h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]");
+
+      for (h of headings) {
+        const link = document.createElement('a')
+        link.href = '#' + h.id
+        link.className = 'anchor'
+        link.textContent = ' #'
+        h.appendChild(link)
+      }
+    }
+  </script>
+</head>
