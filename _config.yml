@@ -14,7 +14,7 @@ favicon: "/assets/images/favicon.png" # name+extension of favicon (which must be
 remote_theme: no-style-please # if you are using GitHub Pages, change it to remote_theme: riggraz/no-style-please
 
 theme_config:
-  appearance: "auto" # can be "light", "dark" or "auto"
+  appearance: "dark" # can be "light", "dark" or "auto"
   back_home_text: "/"
 
 sass:
