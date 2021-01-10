@@ -1,4 +1,4 @@
-title: Hello world! # name of the site
+title: ℌ𝔦 𝔱𝔥𝔢𝔯𝔢 👋! 𝔏𝔢𝔱'𝔰 𝔰𝔭𝔢𝔞𝔨 𝔰𝔬𝔪𝔢 𝔠𝔬𝔡𝔢. # name of the site
 author: Sy Tran
 email: sytranvn@gmail.com
 url: "https://sytranvn.github.io" # the base hostname & protocol for your site, e.g. http://example.com
@@ -8,13 +8,14 @@ description: > # description of the site (multiple lines allowed)
 
 permalink: /:slug.html
 
-favicon: "logo.png" # name+extension of favicon (which must be put on the root folder)
+favicon: "/assets/images/favicon.png" # name+extension of favicon (which must be put on the root folder)
 # goat_counter: "yoursitename" # put your GoatCounter name if you want to use GoatCounter analytics
 
 remote_theme: no-style-please # if you are using GitHub Pages, change it to remote_theme: riggraz/no-style-please
 
 theme_config:
   appearance: "auto" # can be "light", "dark" or "auto"
+  back_home_text: "/"
 
 sass:
   style: :compressed
