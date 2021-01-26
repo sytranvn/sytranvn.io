@@ -2,6 +2,16 @@
 layout: home
 ---
 
+![Github Stats](https://github-readme-stats.vercel.app/api?username=sytranvn&show_icons=true&title_color=000&icon_color=000&text_color=000)
+
+***
+## [About me](/about)
+![](https://img.shields.io/static/v1?label=Color&message=green&color=lightgreen)
+![](https://img.shields.io/static/v1?label=Language&color=yellow&logo=javascript&message=Javascript)
+![](https://img.shields.io/static/v1?label=Instrument&color=d8588c&message=Flute+🎶)
+
+And also
+
 ![Linux](https://img.shields.io/static/v1?style=square&color=0F0F0F&logoColor=FFFFCC&logo=linux&label=&message=Linux)
 <!-- ![AWS](https://img.shields.io/static/v1?style=square&color=0F0F0F&logoColor=FFFFCC&logo=amazon-aws&label=&message=AWS) -->
 ![Docker](https://img.shields.io/static/v1?style=square&color=0F0F0F&logoColor=FFFFCC&logo=docker&label=&message=Docker)
@@ -12,17 +22,8 @@ layout: home
 ![Go](https://img.shields.io/static/v1?style=square&color=0F0F0F&logoColor=FFFFCC&logo=go&label=&message=Go)
 ![Git](https://img.shields.io/static/v1?style=square&color=0F0F0F&logoColor=FFFFCC&logo=git&label=&message=Git)
 
-![Github Stats](https://github-readme-stats.vercel.app/api?username=sytranvn&show_icons=true&title_color=000&icon_color=000&text_color=000)
 
-
-***
-
-## Certificates
-- [AlgoExpert.io Certificate of Completion](https://certificate.algoexpert.io/AlgoExpert%20Certificate%20AE-16e9aed644)
-
-***
-## Contributions
-- [Fix error loading source maps for react devtools extension](https://github.com/facebook/react/blob/master/packages/react-devtools/CHANGELOG.md#bugfix-1)
+[![](https://img.shields.io/static/v1?label=If+you+want+to+learn+more&message=About+me&color=white)](/about)
 
 ***
 ## On this site

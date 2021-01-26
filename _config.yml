@@ -2,7 +2,7 @@ title: ℌ𝔦 𝔱𝔥𝔢𝔯𝔢 👋! 𝔏𝔢𝔱'𝔰 𝔰𝔭𝔢𝔞𝔨
 author: Sy Tran
 email: sytranvn@gmail.com
 url: "https://sytranvn.github.io" # the base hostname & protocol for your site, e.g. http://example.com
-baseurl: "/" # subpath of the site, e.g. "/blog"
+baseurl: "" # subpath of the site, e.g. "/blog"
 description: > # description of the site (multiple lines allowed)
   A (nearly) no-CSS, fast, minimalist Jekyll theme.
 
