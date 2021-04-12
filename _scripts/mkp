@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+if [[ -z "$1" ]]; then
+    echo "Post title required."
+    exit 1
+fi
+
+parr=("$@")
+post=$(printf -- '-%s' "${parr[@]}")
+title=$(printf ' %s' "${parr[@]}")
+now=$(date +%Y-%m-%d)
+
+echo "\
+---
+layout: post
+title:$title
+---
+" > "_posts/$now$post.md"

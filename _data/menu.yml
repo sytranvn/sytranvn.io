@@ -12,7 +12,9 @@ entries:
   - title: posts by category
     entries:
     - title: v8
-      url: v8.html
+      url: categories/v8.html
+    - title: reactjs
+      url: categories/reactjs.html
 
   - title: rss
     url: feed.xml
