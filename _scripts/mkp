@@ -6,7 +6,7 @@ if [[ -z "$1" ]]; then
 fi
 
 parr=("$@")
-post=$(printf -- '-%s' "${parr[@]}")
+post=$(printf -- '-%s' "${parr[@]}" | tr '[:upper:]' '[:lower:]')
 title=$(printf ' %s' "${parr[@]}")
 now=$(date +%Y-%m-%d)
 
@@ -15,4 +15,4 @@ echo "\
 layout: post
 title:$title
 ---
-" > "_posts/$now$post.md"
+" > "_posts/$now${post}.md"

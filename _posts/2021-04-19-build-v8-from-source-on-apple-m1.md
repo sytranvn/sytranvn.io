@@ -1,6 +1,7 @@
 ---
 layout: post
-title: build-v8-from-source-on-apple-m1
+title: Build v8 from source on Apple M1
+categories: v8
 ---
 
 

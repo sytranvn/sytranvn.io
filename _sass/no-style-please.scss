@@ -26,7 +26,7 @@ html { height: 100%; }
 body {
   color: black;
   font-family: monospace;
-  font-size: 1.3rem;
+  font-size: 1rem;
   line-height: 1.3;
   margin: 0;
   min-height: 100%;
@@ -48,7 +48,9 @@ li { margin: 0.4rem 0; }
 *:target { background: yellow; }
 
 .w {
-  width: fit-content;
+  @media screen and (min-width: 640px) {
+    width: fit-content;
+  }
   max-width: 640px;
   margin: 0 auto;
   padding: 4rem 2rem;
@@ -69,7 +71,7 @@ table, th, td {
   padding: 0.4rem;
 }
 
-code { font-size: 0.9em; color: #144; }
+code { font-size: 0.9rem; color: #144; }
 .highlight  { background: #ffffff; }
 .highlight .c { color: #999988; font-style: italic } /* Comment */
 .highlight .err { color: #a61717; background-color: #e3d2d2 } /* Error */
